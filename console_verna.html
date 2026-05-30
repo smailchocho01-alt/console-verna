@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Console Verna — Meuble d'entrée bois massif | 11 500 DA</title>
+<meta name="description" content="Console + miroir en bois massif. Livraison 24h dans les 58 wilayas. Paiement à la livraison. 3 finitions au choix.">
+<meta property="og:title" content="Console Verna — 11 500 DA">
+<meta property="og:description" content="Bois massif. Livraison 24h. Payable à livraison.">
+<meta property="og:type" content="product">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Cairo:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: #f7f5f0; color: #2a3326; }
+.page { max-width: 480px; margin: 0 auto; background: #fff; min-height: 100vh; }
+
+/* HERO */
+.hero { background: #2a3326; padding: 2.5rem 1.5rem 1.8rem; text-align: center; position: relative; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #87a17d, transparent); }
+.badge { display: inline-block; background: rgba(135,161,125,0.18); border: 0.5px solid rgba(135,161,125,0.45); color: #b5cba9; font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 5px 16px; border-radius: 20px; margin-bottom: 1.2rem; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500; color: #e8e6dc; line-height: 1.1; margin-bottom: 0.7rem; }
+.hero-sub { font-size: 13px; color: #8a9385; line-height: 1.5; letter-spacing: 0.02em; }
+
+/* IMAGE GRID (placeholders — Layer 1 replaces) */
+.img-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 160px 160px; gap: 3px; background: #2a3326; }
+.img-slot { background: #3a4536; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; cursor: pointer; }
+.img-slot.main { grid-row: 1 / 3; cursor: default; }
+.img-slot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.25s ease; }
+.img-slot:not(.main):hover img { opacity: 0.82; }
+.img-slot.thumb-active { box-shadow: inset 0 0 0 2px #87a17d; }
+
+/* SECTIONS */
+.sec { padding: 1.4rem; border-bottom: 0.5px solid #dad6cd; }
+.sec-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #999; margin-bottom: 0.85rem; }
+
+/* VALUE PROPS */
+.vp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.vp { background: #ebe7df; border-radius: 10px; padding: 13px; display: flex; gap: 9px; }
+.vp-ico { width: 32px; height: 32px; border-radius: 8px; background: rgba(135,161,125,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+.vp strong { display: block; font-size: 12.5px; font-weight: 500; margin-bottom: 2px; color: #2a3326; }
+.vp span { font-size: 11px; color: #888; line-height: 1.4; }
+
+/* REVIEWS */
+.rating-row { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.big-rating { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; line-height: 1; color: #2a3326; }
+.stars { color: #87a17d; font-size: 15px; display: block; margin-bottom: 2px; letter-spacing: 0.05em; }
+.rev-count { font-size: 11.5px; color: #888; }
+.review { background: #ebe7df; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+.rev-head { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; flex-wrap: wrap; }
+.avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(135,161,125,0.22); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #4a5a44; flex-shrink: 0; }
+.rev-name { font-size: 13px; font-weight: 500; color: #2a3326; }
+.rev-city { font-size: 11px; color: #aaa; margin-left: auto; }
+.rev-stars { font-size: 11px; color: #87a17d; letter-spacing: 0.05em; }
+.rev-text { font-size: 12px; color: #555; line-height: 1.55; }
+
+/* COLOR SELECTOR — 3 variants (wood colors are real, not theme-dependent) */
+.color-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.col-opt { position: relative; border: 1.5px solid transparent; border-radius: 10px; padding: 14px 10px 12px; cursor: pointer; background: #ebe7df; transition: all 0.2s; }
+.col-opt.active { border-color: #87a17d; background: rgba(135,161,125,0.10); }
+.swatch { width: 30px; height: 30px; border-radius: 50%; margin-bottom: 10px; }
+.sw-beige { background: radial-gradient(circle at 40% 40%, #e8d4b0, #b8956a); }
+.sw-blanc { background: radial-gradient(circle at 40% 40%, #ffffff, #ebe6dd); border: 0.5px solid #cdc7b8; }
+.sw-noyer { background: radial-gradient(circle at 40% 40%, #7a4e2a, #4a2e10); }
+.col-name { font-size: 12.5px; font-weight: 500; color: #2a3326; display: block; line-height: 1.2; }
+.col-sub { font-size: 10px; color: #999; display: block; margin-top: 3px; line-height: 1.3; }
+.chk { position: absolute; top: 8px; right: 8px; width: 16px; height: 16px; border-radius: 50%; background: #87a17d; display: none; align-items: center; justify-content: center; }
+.col-opt.active .chk { display: flex; }
+.chk svg path { stroke: #fff; }
+
+/* PRICE BLOCK */
+.price-block { margin-top: 1.2rem; }
+.price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 0.8rem; }
+.price { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: #2a3326; }
+.price-old { font-size: 15px; color: #bbb; text-decoration: line-through; }
+.p-badge { font-size: 12px; background: rgba(135,161,125,0.18); color: #4a5a44; padding: 4px 10px; border-radius: 20px; font-weight: 500; }
+.cod-badge { background: rgba(135,161,125,0.12); border: 0.5px dashed #87a17d; color: #4a5a44; padding: 11px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 500; text-align: center; }
+
+/* DIMENSIONS */
+.dim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dim-item { background: #ebe7df; padding: 11px 13px; border-radius: 8px; }
+.dim-item strong { display: block; font-size: 9.5px; color: #999; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 3px; }
+.dim-item span { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: #2a3326; }
+.dim-note { font-size: 11px; color: #aaa; text-align: center; margin-top: 10px; }
+
+/* CTA */
+.cta-sec { padding: 1.4rem; }
+.btn-main { width: 100%; padding: 17px; background: #2a3326; color: #e8e6dc; border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 500; cursor: pointer; letter-spacing: 0.02em; margin-bottom: 10px; position: relative; overflow: hidden; line-height: 1.3; }
+.btn-main::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(135,161,125,0.55), transparent); }
+.btn-main:hover { background: #3a4536; }
+.btn-sec { width: 100%; padding: 14px; background: transparent; border: 0.5px solid #c7c2b3; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: #666; cursor: pointer; }
+.btn-sec:hover { background: #ebe7df; }
+.cta-note { font-size: 11px; color: #aaa; text-align: center; margin-bottom: 10px; }
+
+/* FORM */
+.form-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; margin-bottom: 1.3rem; color: #2a3326; text-align: center; line-height: 1.1; }
+.form-field { margin-bottom: 0.95rem; }
+.form-field label { display: block; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; font-weight: 500; }
+.form-field input { width: 100%; padding: 13px 14px; border: 1px solid #c7c2b3; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; background: #fff; color: #2a3326; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none; }
+.form-field input:focus { outline: none; border-color: #87a17d; }
+.form-field input[readonly] { background: #ebe7df; color: #5a6a54; cursor: not-allowed; }
+.form-field input.invalid { border-color: #d94a3c; background: #fff5f3; }
+.form-hint { display: block; font-size: 11px; color: #888; margin-top: 5px; line-height: 1.4; }
+.form-err { display: none; font-size: 11.5px; color: #d94a3c; margin-top: 5px; font-weight: 500; }
+.form-err.show { display: block; }
+
+/* WILAYA CUSTOM AUTOCOMPLETE */
+.wilaya-wrap { position: relative; }
+.wilaya-dropdown { position: absolute; top: calc(100% - 2px); left: 0; right: 0; max-height: 240px; overflow-y: auto; background: #fff; border: 1px solid #87a17d; border-top: 1px solid #c7c2b3; border-radius: 0 0 8px 8px; z-index: 20; display: none; box-shadow: 0 6px 16px rgba(42,51,38,0.10); }
+.wilaya-dropdown.show { display: block; }
+.wilaya-item { padding: 11px 14px; font-size: 13.5px; cursor: pointer; color: #2a3326; border-bottom: 0.5px solid #f0ece4; user-select: none; }
+.wilaya-item:last-child { border-bottom: none; }
+.wilaya-item:hover, .wilaya-item.highlighted { background: #ebe7df; }
+.wilaya-item .match { color: #4a5a44; font-weight: 600; }
+.wilaya-empty { padding: 14px; font-size: 12px; color: #888; font-style: italic; text-align: center; }
+.wilaya-dropdown::-webkit-scrollbar { width: 6px; }
+.wilaya-dropdown::-webkit-scrollbar-thumb { background: #c7c2b3; border-radius: 3px; }
+.wilaya-dropdown::-webkit-scrollbar-track { background: #f7f5f0; }
+
+/* FAQ */
+.faq-item { background: #ebe7df; border-radius: 10px; margin-bottom: 6px; overflow: hidden; }
+.faq-item summary { padding: 13px 14px; font-size: 13px; font-weight: 500; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #2a3326; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 18px; color: #87a17d; font-weight: 300; flex-shrink: 0; }
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { padding: 0 14px 14px; font-size: 12px; color: #555; line-height: 1.6; }
+
+/* TRUST */
+.trust { display: flex; justify-content: center; gap: 18px; padding: 1.2rem; border-top: 0.5px solid #dad6cd; flex-wrap: wrap; }
+.t-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #aaa; }
+.t-dot { width: 6px; height: 6px; border-radius: 50%; background: #87a17d; flex-shrink: 0; }
+
+/* LANGUAGE TOGGLE */
+.lang-toggle { position: absolute; top: 14px; right: 14px; background: rgba(135,161,125,0.18); color: #b5cba9; border: 0.5px solid rgba(135,161,125,0.45); padding: 6px 14px; border-radius: 16px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; letter-spacing: 0.05em; z-index: 10; transition: background 0.2s; }
+.lang-toggle:hover { background: rgba(135,161,125,0.32); }
+
+/* SUCCESS CARD */
+.success-block { display: none; text-align: center; padding: 1rem 0.3rem; }
+.cta-sec.submitted .form-title,
+.cta-sec.submitted #order-form,
+.cta-sec.submitted > .btn-sec { display: none; }
+.cta-sec.submitted .success-block { display: block; }
+.success-ico { width: 64px; height: 64px; margin: 0 auto 1.1rem; border-radius: 50%; background: rgba(135,161,125,0.18); color: #4a5a44; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 300; border: 1px solid rgba(135,161,125,0.45); }
+.success-title { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; margin-bottom: 0.9rem; color: #2a3326; line-height: 1.15; }
+.success-msg { font-size: 13.5px; color: #555; line-height: 1.65; margin-bottom: 1.1rem; padding: 0 0.5rem; }
+.success-info { font-size: 12.5px; color: #4a5a44; font-weight: 500; padding: 11px 16px; background: rgba(135,161,125,0.14); border: 0.5px dashed #87a17d; border-radius: 8px; display: inline-block; }
+[dir="rtl"] .success-title { font-family: 'Amiri', 'Cormorant Garamond', serif; }
+
+/* RTL OVERRIDES */
+[dir="rtl"] body { font-family: 'Cairo', 'DM Sans', sans-serif; }
+[dir="rtl"] .hero h1,
+[dir="rtl"] .form-title { font-family: 'Amiri', 'Cormorant Garamond', serif; }
+[dir="rtl"] .lang-toggle { right: auto; left: 14px; }
+[dir="rtl"] .rev-city { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .chk { right: auto; left: 8px; }
+[dir="rtl"] .sec-label { letter-spacing: 0; }
+[dir="rtl"] .form-field label { letter-spacing: 0; }
+[dir="rtl"] .dim-item strong { letter-spacing: 0; }
+[dir="rtl"] .badge { letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 1. HERO -->
+  <div class="hero">
+    <button type="button" class="lang-toggle" onclick="toggleLang()" data-i18n="lang-btn" aria-label="Changer la langue">العربية</button>
+    <div class="badge" data-i18n="badge">✦ Édition Bois Massif — Livraison 24h</div>
+    <h1 data-i18n-html="h1">Donnez à votre entrée<br>le style qu'elle mérite</h1>
+    <p class="hero-sub" data-i18n-html="hero-sub">Console + Miroir en bois massif.<br>Livrée chez vous en 24h, payable à la livraison.</p>
+  </div>
+
+  <!-- 2. GALLERY -->
+  <div class="img-grid">
+    <div class="img-slot main">
+      <img id="main-img" src="PHOTO/31.png" alt="Console Verna — Vue principale">
+    </div>
+    <div class="img-slot thumb-active" onclick="swapMain('PHOTO/31.png', this)">
+      <img src="PHOTO/31.png" alt="Console Verna — Entrée algérienne">
+    </div>
+    <div class="img-slot" onclick="swapMain('PHOTO/38.png', this)">
+      <img src="PHOTO/38.png" alt="Console Verna — Beige Naturel installé">
+    </div>
+    <div class="img-slot" onclick="swapMain('PHOTO/13.png', this)">
+      <img src="PHOTO/13.png" alt="Console Verna — Vue de face">
+    </div>
+    <div class="img-slot" onclick="swapMain('PHOTO/32.png', this)">
+      <img src="PHOTO/32.png" alt="Console Verna — Noyer Foncé">
+    </div>
+  </div>
+
+  <!-- 3. VALUE PROPS -->
+  <div class="sec">
+    <p class="sec-label" data-i18n="vp-title">Pourquoi Console Verna</p>
+    <div class="vp-grid">
+      <div class="vp"><div class="vp-ico">🪵</div><div><strong data-i18n="vp1-t">Bois massif</strong><span data-i18n="vp1-d">Pas du contreplaqué bon marché</span></div></div>
+      <div class="vp"><div class="vp-ico">💵</div><div><strong data-i18n="vp2-t">Paiement à livraison</strong><span data-i18n="vp2-d">Vous voyez avant de payer</span></div></div>
+      <div class="vp"><div class="vp-ico">🚚</div><div><strong data-i18n="vp3-t">58 wilayas</strong><span data-i18n="vp3-d">Livraison à votre porte</span></div></div>
+      <div class="vp"><div class="vp-ico">🛡️</div><div><strong data-i18n="vp4-t">Garantie 1 an</strong><span data-i18n="vp4-d">Échange immédiat si défaut</span></div></div>
+    </div>
+  </div>
+
+  <!-- 4. SOCIAL PROOF -->
+  <div class="sec">
+    <p class="sec-label" data-i18n="rv-title">Ils ont déjà reçu la leur</p>
+    <div class="rating-row">
+      <div class="big-rating">4.9</div>
+      <div><span class="stars">★★★★★</span><span class="rev-count" data-i18n="rv-count">Plus de 200 familles équipées en 2025</span></div>
+    </div>
+
+    <div class="review">
+      <div class="rev-head">
+        <div class="avatar">SA</div>
+        <span class="rev-name" data-i18n="rv1-name">Samira A.</span>
+        <span class="rev-stars">★★★★★</span>
+        <span class="rev-city" data-i18n="rv1-city">Alger</span>
+      </div>
+      <p class="rev-text" data-i18n="rv1-text">"Livrée en 48h à Alger. Le bois est massif, on le sent au poids. Rien à voir avec ce qu'on trouve à 6 000 DA en grande surface."</p>
+    </div>
+
+    <div class="review">
+      <div class="rev-head">
+        <div class="avatar">KM</div>
+        <span class="rev-name" data-i18n="rv2-name">Karim M.</span>
+        <span class="rev-stars">★★★★★</span>
+        <span class="rev-city" data-i18n="rv2-city">Oran</span>
+      </div>
+      <p class="rev-text" data-i18n="rv2-text">"L'entrée de la maison a changé du tout au tout. Finition Noyer Foncé, ma femme l'a montrée à toute la famille."</p>
+    </div>
+
+    <div class="review">
+      <div class="rev-head">
+        <div class="avatar">NB</div>
+        <span class="rev-name" data-i18n="rv3-name">Nadia B.</span>
+        <span class="rev-stars">★★★★★</span>
+        <span class="rev-city" data-i18n="rv3-city">Constantine</span>
+      </div>
+      <p class="rev-text" data-i18n="rv3-text">"J'ai comparé 3 boutiques avant. Cette console est dans une autre catégorie — et le paiement à la livraison m'a rassurée."</p>
+    </div>
+
+    <div class="review">
+      <div class="rev-head">
+        <div class="avatar">RA</div>
+        <span class="rev-name" data-i18n="rv4-name">Rachid A.</span>
+        <span class="rev-stars">★★★★★</span>
+        <span class="rev-city" data-i18n="rv4-city">Annaba</span>
+      </div>
+      <p class="rev-text" data-i18n="rv4-text">"Emballage sérieux, produit conforme aux photos, livreur sympa. Recommandé sans hésiter."</p>
+    </div>
+  </div>
+
+  <!-- 5. VARIANTS + PRICE -->
+  <div class="sec">
+    <p class="sec-label" data-i18n="var-title">Choisissez votre finition</p>
+    <div class="color-row">
+      <div class="col-opt active" id="opt-beige" onclick="pick('beige')">
+        <div class="swatch sw-beige"></div>
+        <span class="col-name" data-i18n="col-beige">Beige Naturel</span>
+        <span class="col-sub" data-i18n="col-beige-sub">Clair & chaleureux</span>
+        <div class="chk"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="col-opt" id="opt-blanc" onclick="pick('blanc')">
+        <div class="swatch sw-blanc"></div>
+        <span class="col-name" data-i18n="col-blanc">Blanc Mat</span>
+        <span class="col-sub" data-i18n="col-blanc-sub">Épuré & moderne</span>
+        <div class="chk"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="col-opt" id="opt-noyer" onclick="pick('noyer')">
+        <div class="swatch sw-noyer"></div>
+        <span class="col-name" data-i18n="col-noyer">Noyer Foncé</span>
+        <span class="col-sub" data-i18n="col-noyer-sub">Élégant & raffiné</span>
+        <div class="chk"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="price-block">
+      <div class="price-row">
+        <span class="price">11 500 DA</span>
+        <span class="price-old">14 000 DA</span>
+        <span class="p-badge">−18%</span>
+      </div>
+      <div class="cod-badge" data-i18n="cod-badge">💵 Paiement à la livraison — Pas un centime avant</div>
+    </div>
+  </div>
+
+  <!-- 6. DIMENSIONS -->
+  <div class="sec">
+    <p class="sec-label" data-i18n="dim-title">📐 Dimensions exactes</p>
+    <div class="dim-grid">
+      <div class="dim-item"><strong data-i18n="dim-h">Hauteur</strong><span>120 cm</span></div>
+      <div class="dim-item"><strong data-i18n="dim-w">Largeur</strong><span>80 cm</span></div>
+      <div class="dim-item"><strong data-i18n="dim-d">Profondeur</strong><span>17 cm</span></div>
+      <div class="dim-item"><strong data-i18n="dim-p">Poids</strong><span>7,8 kg</span></div>
+    </div>
+    <p class="dim-note" data-i18n="dim-note">Tolérance ±3 cm</p>
+  </div>
+
+  <!-- 7. ORDER FORM -->
+  <div class="cta-sec">
+    <h2 class="form-title" data-i18n="form-title">Votre commande</h2>
+
+    <form id="order-form" onsubmit="return submitOrder(event)" novalidate>
+      <div class="form-field">
+        <label for="prenom" data-i18n="lbl-prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
+        <span class="form-err" id="err-prenom"></span>
+      </div>
+
+      <div class="form-field">
+        <label for="phone" data-i18n="lbl-phone">Numéro de téléphone</label>
+        <input type="tel" id="phone" name="phone" inputmode="tel" placeholder="0661 23 45 67" autocomplete="tel" required>
+        <span class="form-hint" data-i18n="phone-hint">🔒 Nous vous appelons une seule fois pour confirmer</span>
+        <span class="form-err" id="err-phone"></span>
+      </div>
+
+      <div class="form-field wilaya-wrap">
+        <label for="wilaya" data-i18n="lbl-wilaya">Wilaya</label>
+        <input type="text" id="wilaya" name="wilaya" placeholder="Choisir ou taper..." data-i18n-placeholder="ph-wilaya" autocomplete="off" required>
+        <div class="wilaya-dropdown" id="wilaya-dropdown" role="listbox"></div>
+        <span class="form-err" id="err-wilaya"></span>
+      </div>
+
+      <div class="form-field">
+        <label for="finition" data-i18n="lbl-finition">Finition choisie</label>
+        <input type="text" id="finition" name="finition" readonly value="Beige Naturel">
+      </div>
+
+      <p class="cta-note" data-i18n="cta-note">Sans engagement — vous confirmez par téléphone</p>
+      <button type="submit" class="btn-main" data-i18n="cta-btn">Je commande — Paiement à la livraison →</button>
+    </form>
+
+    <button type="button" class="btn-sec" onclick="contact()" data-i18n="cta-wa">💬 J'ai une question — Discuter sur WhatsApp</button>
+
+    <div class="success-block">
+      <div class="success-ico">✓</div>
+      <h2 class="success-title" data-i18n="success-title">Commande reçue</h2>
+      <p class="success-msg" data-i18n="success-msg">Merci ! Nous vous appelons dans les 24h pour confirmer votre commande et les frais de livraison.</p>
+      <p class="success-info" data-i18n="success-info">📞 Gardez votre téléphone à portée de main</p>
+    </div>
+  </div>
+
+  <!-- 8. FAQ -->
+  <div class="sec">
+    <p class="sec-label" data-i18n="faq-title">Questions fréquentes</p>
+
+    <details class="faq-item">
+      <summary data-i18n="faq1-q">Comment se passe la livraison ?</summary>
+      <p data-i18n="faq1-a">Notre transporteur vous contacte 24-48h après votre commande pour fixer un rendez-vous. Vous payez à la livraison, après avoir vu et inspecté le produit.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary data-i18n="faq2-q">Combien coûte la livraison ?</summary>
+      <p data-i18n="faq2-a">Les frais varient selon votre wilaya. Le montant exact vous est communiqué par téléphone lors de la confirmation — aucune surprise.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary data-i18n="faq3-q">Et si le produit ne me plaît pas ?</summary>
+      <p data-i18n="faq3-a">Vous pouvez refuser la livraison sur place — vous ne payez rien. Si vous l'acceptez et changez d'avis, vous avez 7 jours pour l'échanger.</p>
+    </details>
+  </div>
+
+  <!-- 9. TRUST BAR -->
+  <div class="trust">
+    <div class="t-item"><div class="t-dot"></div> <span data-i18n="trust1">Paiement à livraison</span></div>
+    <div class="t-item"><div class="t-dot"></div> <span data-i18n="trust2">Garantie 1 an</span></div>
+    <div class="t-item"><div class="t-dot"></div> <span data-i18n="trust3">Support WhatsApp</span></div>
+  </div>
+
+</div>
+
+<script>
+/* ───────────────── I18N (FR / AR) ───────────────── */
+const I18N = {
+  fr: {
+    'title': "Console Verna — Meuble d'entrée bois massif | 11 500 DA",
+    'badge': "✦ Édition Bois Massif — Livraison 24h",
+    'h1': "Donnez à votre entrée<br>le style qu'elle mérite",
+    'hero-sub': "Console + Miroir en bois massif.<br>Livrée chez vous en 24h, payable à la livraison.",
+    'vp-title': "Pourquoi Console Verna",
+    'vp1-t': "Bois massif", 'vp1-d': "Pas du contreplaqué bon marché",
+    'vp2-t': "Paiement à livraison", 'vp2-d': "Vous voyez avant de payer",
+    'vp3-t': "58 wilayas", 'vp3-d': "Livraison à votre porte",
+    'vp4-t': "Garantie 1 an", 'vp4-d': "Échange immédiat si défaut",
+    'rv-title': "Ils ont déjà reçu la leur",
+    'rv-count': "Plus de 200 familles équipées en 2025",
+    'rv1-name': "Samira A.", 'rv1-city': "Alger",
+    'rv1-text': "“Livrée en 48h à Alger. Le bois est massif, on le sent au poids. Rien à voir avec ce qu'on trouve à 6 000 DA en grande surface.”",
+    'rv2-name': "Karim M.", 'rv2-city': "Oran",
+    'rv2-text': "“L'entrée de la maison a changé du tout au tout. Finition Noyer Foncé, ma femme l'a montrée à toute la famille.”",
+    'rv3-name': "Nadia B.", 'rv3-city': "Constantine",
+    'rv3-text': "“J'ai comparé 3 boutiques avant. Cette console est dans une autre catégorie — et le paiement à la livraison m'a rassurée.”",
+    'rv4-name': "Rachid A.", 'rv4-city': "Annaba",
+    'rv4-text': "“Emballage sérieux, produit conforme aux photos, livreur sympa. Recommandé sans hésiter.”",
+    'var-title': "Choisissez votre finition",
+    'col-beige': "Beige Naturel", 'col-beige-sub': "Clair & chaleureux",
+    'col-blanc': "Blanc Mat", 'col-blanc-sub': "Épuré & moderne",
+    'col-noyer': "Noyer Foncé", 'col-noyer-sub': "Élégant & raffiné",
+    'cod-badge': "💵 Paiement à la livraison — Pas un centime avant",
+    'dim-title': "📐 Dimensions exactes",
+    'dim-h': "Hauteur", 'dim-w': "Largeur", 'dim-d': "Profondeur", 'dim-p': "Poids",
+    'dim-note': "Tolérance ±3 cm",
+    'form-title': "Votre commande",
+    'lbl-prenom': "Prénom",
+    'lbl-phone': "Numéro de téléphone",
+    'phone-hint': "🔒 Nous vous appelons une seule fois pour confirmer",
+    'lbl-wilaya': "Wilaya", 'ph-wilaya': "Choisir ou taper...",
+    'lbl-finition': "Finition choisie",
+    'cta-note': "Sans engagement — vous confirmez par téléphone",
+    'cta-btn': "Je commande — Paiement à la livraison →",
+    'cta-wa': "💬 J'ai une question — Discuter sur WhatsApp",
+    'faq-title': "Questions fréquentes",
+    'faq1-q': "Comment se passe la livraison ?",
+    'faq1-a': "Notre transporteur vous contacte 24-48h après votre commande pour fixer un rendez-vous. Vous payez à la livraison, après avoir vu et inspecté le produit.",
+    'faq2-q': "Combien coûte la livraison ?",
+    'faq2-a': "Les frais varient selon votre wilaya. Le montant exact vous est communiqué par téléphone lors de la confirmation — aucune surprise.",
+    'faq3-q': "Et si le produit ne me plaît pas ?",
+    'faq3-a': "Vous pouvez refuser la livraison sur place — vous ne payez rien. Si vous l'acceptez et changez d'avis, vous avez 7 jours pour l'échanger.",
+    'trust1': "Paiement à livraison", 'trust2': "Garantie 1 an", 'trust3': "Support WhatsApp",
+    'err-prenom': "Veuillez entrer votre prénom",
+    'err-phone': "Numéro invalide. Exemple : 0661234567",
+    'err-wilaya': "Veuillez choisir une wilaya dans la liste",
+    'wilaya-empty': "Aucune wilaya trouvée",
+    'lang-btn': "العربية",
+    'success-title': "Commande reçue ✓",
+    'success-msg': "Merci ! Nous vous appelons dans les 24h pour confirmer votre commande et les frais de livraison.",
+    'success-info': "📞 Gardez votre téléphone à portée de main",
+    'wa-question': "Bonjour, j'ai une question sur la Console Verna."
+  },
+  ar: {
+    'title': "كونسول Verna — أثاث مدخل من الخشب الطبيعي | 11,500 دج",
+    'badge': "✦ إصدار خشب طبيعي — توصيل خلال 24 ساعة",
+    'h1': "امنح مدخل منزلك<br>الأناقة التي يستحقها",
+    'hero-sub': "كونسول + مرآة من الخشب الطبيعي.<br>تُوصَّل إليك خلال 24 ساعة، الدفع عند الاستلام.",
+    'vp-title': "لماذا كونسول Verna",
+    'vp1-t': "خشب طبيعي", 'vp1-d': "ليس خشبًا مضغوطًا رخيصًا",
+    'vp2-t': "الدفع عند الاستلام", 'vp2-d': "تتفقد المنتج قبل الدفع",
+    'vp3-t': "58 ولاية", 'vp3-d': "توصيل إلى باب منزلك",
+    'vp4-t': "ضمان سنة", 'vp4-d': "استبدال فوري عند وجود عيب",
+    'rv-title': "لقد استلموها بالفعل",
+    'rv-count': "أكثر من 200 عائلة جهّزت منزلها في 2025",
+    'rv1-name': "سميرة أ.", 'rv1-city': "الجزائر",
+    'rv1-text': "«وُصِلَت خلال 48 ساعة إلى الجزائر العاصمة. الخشب طبيعي وتُحسّ بثقله. لا مقارنة مع ما يُباع بـ 6000 دج في المحلات الكبرى.»",
+    'rv2-name': "كريم م.", 'rv2-city': "وهران",
+    'rv2-text': "«تغيّر مدخل البيت تمامًا. اخترت تشطيب جوز داكن، وزوجتي أَرَتْها لكل العائلة.»",
+    'rv3-name': "نادية ب.", 'rv3-city': "قسنطينة",
+    'rv3-text': "«قارنت 3 متاجر قبل الشراء. هذا الكونسول من فئة أخرى — والدفع عند الاستلام أعطاني الأمان.»",
+    'rv4-name': "رشيد أ.", 'rv4-city': "عنابة",
+    'rv4-text': "«تغليف محكم، المنتج مطابق للصور، عامل التوصيل لطيف. أنصح به بدون تردد.»",
+    'var-title': "اختر اللون",
+    'col-beige': "بيج طبيعي", 'col-beige-sub': "فاتح ودافئ",
+    'col-blanc': "أبيض مطفي", 'col-blanc-sub': "أنيق وعصري",
+    'col-noyer': "جوز داكن", 'col-noyer-sub': "أنيق وراقٍ",
+    'cod-badge': "💵 الدفع عند الاستلام — ولا سنتيم مقدمًا",
+    'dim-title': "📐 الأبعاد بالضبط",
+    'dim-h': "الارتفاع", 'dim-w': "العرض", 'dim-d': "العمق", 'dim-p': "الوزن",
+    'dim-note': "هامش ±3 سم",
+    'form-title': "طلبك",
+    'lbl-prenom': "الاسم",
+    'lbl-phone': "رقم الهاتف",
+    'phone-hint': "🔒 سنتصل بك مرة واحدة فقط للتأكيد",
+    'lbl-wilaya': "الولاية", 'ph-wilaya': "اختر أو اكتب...",
+    'lbl-finition': "اللون المختار",
+    'cta-note': "بدون التزام — تؤكد الطلب عبر الهاتف",
+    'cta-btn': "اطلب الآن — الدفع عند الاستلام ←",
+    'cta-wa': "💬 لدي سؤال — تواصل عبر واتساب",
+    'faq-title': "الأسئلة الشائعة",
+    'faq1-q': "كيف تتم عملية التوصيل؟",
+    'faq1-a': "يتصل بك الموصِّل خلال 24-48 ساعة بعد طلبك لتحديد موعد. تدفع عند الاستلام، بعد رؤية المنتج وفحصه.",
+    'faq2-q': "كم تكلفة التوصيل؟",
+    'faq2-a': "تختلف الرسوم حسب الولاية. سيتم إخبارك بالمبلغ الدقيق هاتفيًا عند التأكيد — بدون مفاجآت.",
+    'faq3-q': "ماذا لو لم يعجبني المنتج؟",
+    'faq3-a': "يمكنك رفض الاستلام في المكان — ولن تدفع شيئًا. إذا قبلته ثم غيّرت رأيك، لديك 7 أيام لاستبداله.",
+    'trust1': "الدفع عند الاستلام", 'trust2': "ضمان سنة", 'trust3': "دعم واتساب",
+    'err-prenom': "الرجاء إدخال اسمك",
+    'err-phone': "رقم غير صحيح. مثال: 0661234567",
+    'err-wilaya': "الرجاء اختيار ولاية من القائمة",
+    'wilaya-empty': "لم يتم العثور على ولاية",
+    'lang-btn': "FR",
+    'success-title': "تم استلام طلبك ✓",
+    'success-msg': "شكرًا لك! سنتصل بك خلال 24 ساعة لتأكيد طلبك ورسوم التوصيل.",
+    'success-info': "📞 احتفظ بهاتفك معك",
+    'wa-question': "السلام عليكم، لدي سؤال عن كونسول Verna."
+  }
+};
+
+const FINITION_LABELS = {
+  fr: { beige: 'Beige Naturel', blanc: 'Blanc Mat', noyer: 'Noyer Foncé' },
+  ar: { beige: 'بيج طبيعي', blanc: 'أبيض مطفي', noyer: 'جوز داكن' }
+};
+
+const WILAYAS = [
+  {fr:'Adrar',ar:'أدرار'},{fr:'Chlef',ar:'الشلف'},{fr:'Laghouat',ar:'الأغواط'},{fr:'Oum El Bouaghi',ar:'أم البواقي'},
+  {fr:'Batna',ar:'باتنة'},{fr:'Béjaïa',ar:'بجاية'},{fr:'Biskra',ar:'بسكرة'},{fr:'Béchar',ar:'بشار'},
+  {fr:'Blida',ar:'البليدة'},{fr:'Bouira',ar:'البويرة'},{fr:'Tamanrasset',ar:'تمنراست'},{fr:'Tébessa',ar:'تبسة'},
+  {fr:'Tlemcen',ar:'تلمسان'},{fr:'Tiaret',ar:'تيارت'},{fr:'Tizi Ouzou',ar:'تيزي وزو'},{fr:'Alger',ar:'الجزائر'},
+  {fr:'Djelfa',ar:'الجلفة'},{fr:'Jijel',ar:'جيجل'},{fr:'Sétif',ar:'سطيف'},{fr:'Saïda',ar:'سعيدة'},
+  {fr:'Skikda',ar:'سكيكدة'},{fr:'Sidi Bel Abbès',ar:'سيدي بلعباس'},{fr:'Annaba',ar:'عنابة'},{fr:'Guelma',ar:'قالمة'},
+  {fr:'Constantine',ar:'قسنطينة'},{fr:'Médéa',ar:'المدية'},{fr:'Mostaganem',ar:'مستغانم'},{fr:"M'Sila",ar:'المسيلة'},
+  {fr:'Mascara',ar:'معسكر'},{fr:'Ouargla',ar:'ورقلة'},{fr:'Oran',ar:'وهران'},{fr:'El Bayadh',ar:'البيض'},
+  {fr:'Illizi',ar:'إليزي'},{fr:'Bordj Bou Arréridj',ar:'برج بوعريريج'},{fr:'Boumerdès',ar:'بومرداس'},{fr:'El Tarf',ar:'الطارف'},
+  {fr:'Tindouf',ar:'تندوف'},{fr:'Tissemsilt',ar:'تيسمسيلت'},{fr:'El Oued',ar:'الوادي'},{fr:'Khenchela',ar:'خنشلة'},
+  {fr:'Souk Ahras',ar:'سوق أهراس'},{fr:'Tipaza',ar:'تيبازة'},{fr:'Mila',ar:'ميلة'},{fr:'Aïn Defla',ar:'عين الدفلى'},
+  {fr:'Naâma',ar:'النعامة'},{fr:'Aïn Témouchent',ar:'عين تموشنت'},{fr:'Ghardaïa',ar:'غرداية'},{fr:'Relizane',ar:'غليزان'},
+  {fr:'Timimoun',ar:'تيميمون'},{fr:'Bordj Badji Mokhtar',ar:'برج باجي مختار'},{fr:'Ouled Djellal',ar:'أولاد جلال'},{fr:'Béni Abbès',ar:'بني عباس'},
+  {fr:'In Salah',ar:'عين صالح'},{fr:'In Guezzam',ar:'عين قزام'},{fr:'Touggourt',ar:'تقرت'},{fr:'Djanet',ar:'جانت'},
+  {fr:"El M'Ghair",ar:'المغير'},{fr:'El Meniaa',ar:'المنيعة'}
+];
+
+const ALG_PHONE_RE = /^(\+213|0)[2-9]\d{8}$/;
+const PHONE_NUMBER = '213562637101';
+
+/* ⬇ ضع هنا رابط Web app الذي أعطاك إياه Apps Script (Deploy → Web app URL) */
+const GS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzy6UbgzlUIiuBOfMmpPUo1optULPQu9LYPpSHa676MulCBWUQ5RNzphWdmDTGOlx2K/exec';
+const THEME_NAME = 'verna';
+
+let currentLang = 'fr';
+let selectedColor = 'beige';
+
+function sendToSheet(payload) {
+  if (!GS_WEBHOOK_URL) return;
+  const body = JSON.stringify(payload);
+  try {
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'text/plain;charset=utf-8' });
+      if (navigator.sendBeacon(GS_WEBHOOK_URL, blob)) return;
+    }
+    fetch(GS_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: body
+    }).catch(() => {});
+  } catch (e) {}
+}
+
+/* ───────── Language switching ───────── */
+function applyLang(lang) {
+  currentLang = lang;
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.title = dict.title;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (dict[k] !== undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.dataset.i18nHtml;
+    if (dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const k = el.dataset.i18nPlaceholder;
+    if (dict[k] !== undefined) el.placeholder = dict[k];
+  });
+
+  const fini = document.getElementById('finition');
+  if (fini) fini.value = FINITION_LABELS[lang][selectedColor];
+
+  const wilayaInput = document.getElementById('wilaya');
+  if (wilayaInput && wilayaInput.value) {
+    const match = WILAYAS.find(w => w.fr === wilayaInput.value || w.ar === wilayaInput.value);
+    if (match) wilayaInput.value = match[lang];
+  }
+
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'fr' ? 'ar' : 'fr');
+}
+
+/* ───────── Product interactions ───────── */
+function pick(c) {
+  document.querySelectorAll('.col-opt').forEach(o => o.classList.remove('active'));
+  document.getElementById('opt-' + c).classList.add('active');
+  selectedColor = c;
+  const fini = document.getElementById('finition');
+  if (fini) fini.value = FINITION_LABELS[currentLang][c];
+}
+
+function swapMain(src, el) {
+  const mainImg = document.getElementById('main-img');
+  mainImg.style.opacity = '0';
+  setTimeout(() => {
+    mainImg.src = src;
+    mainImg.style.opacity = '1';
+  }, 200);
+  document.querySelectorAll('.img-slot:not(.main)').forEach(s => s.classList.remove('thumb-active'));
+  el.classList.add('thumb-active');
+}
+
+/* ───────── Form ───────── */
+function showError(field, msg) {
+  document.getElementById(field).classList.add('invalid');
+  const err = document.getElementById('err-' + field);
+  err.textContent = msg;
+  err.classList.add('show');
+}
+
+function clearErrors() {
+  document.querySelectorAll('.form-err').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('.form-field input').forEach(e => e.classList.remove('invalid'));
+}
+
+function submitOrder(e) {
+  e.preventDefault();
+  clearErrors();
+
+  const t = I18N[currentLang];
+  const prenom = document.getElementById('prenom').value.trim();
+  const phoneRaw = document.getElementById('phone').value.trim().replace(/[\s\-\.]/g, '');
+  const wilaya = document.getElementById('wilaya').value.trim();
+  const finition = document.getElementById('finition').value.trim();
+
+  let hasError = false;
+
+  if (prenom.length < 2) { showError('prenom', t['err-prenom']); hasError = true; }
+  if (!ALG_PHONE_RE.test(phoneRaw)) { showError('phone', t['err-phone']); hasError = true; }
+
+  const wilayaValid = WILAYAS.some(w => w.fr === wilaya || w.ar === wilaya);
+  if (!wilayaValid) { showError('wilaya', t['err-wilaya']); hasError = true; }
+
+  if (hasError) {
+    const firstInvalid = document.querySelector('.invalid');
+    if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  }
+
+  sendToSheet({
+    lang: currentLang,
+    prenom: prenom,
+    phone: phoneRaw,
+    wilaya: wilaya,
+    finition: finition,
+    theme: THEME_NAME,
+    source: location.href
+  });
+
+  const cta = document.querySelector('.cta-sec');
+  cta.classList.add('submitted');
+  cta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return false;
+}
+
+function contact() {
+  const msg = I18N[currentLang]['wa-question'];
+  window.location.href = 'https://wa.me/' + PHONE_NUMBER + '?text=' + encodeURIComponent(msg);
+}
+
+/* ───────── Wilaya autocomplete (bilingual) ───────── */
+function setupWilayaAutocomplete() {
+  const input = document.getElementById('wilaya');
+  const dropdown = document.getElementById('wilaya-dropdown');
+  if (!input || !dropdown) return;
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function render(filter) {
+    const lower = filter.toLowerCase().trim();
+    const matches = lower
+      ? WILAYAS.filter(w => w.fr.toLowerCase().includes(lower) || w.ar.includes(filter.trim()))
+      : WILAYAS.slice();
+
+    if (matches.length === 0) {
+      dropdown.innerHTML = '<div class="wilaya-empty">' + escapeHtml(I18N[currentLang]['wilaya-empty']) + '</div>';
+    } else {
+      dropdown.innerHTML = matches.map(w => {
+        const label = w[currentLang];
+        let display = escapeHtml(label);
+        if (lower) {
+          const fld = currentLang === 'ar' ? label : label.toLowerCase();
+          const needle = currentLang === 'ar' ? filter.trim() : lower;
+          const idx = fld.indexOf(needle);
+          if (idx >= 0) {
+            display = escapeHtml(label.substring(0, idx)) +
+                      '<span class="match">' + escapeHtml(label.substring(idx, idx + needle.length)) + '</span>' +
+                      escapeHtml(label.substring(idx + needle.length));
+          }
+        }
+        return '<div class="wilaya-item" data-value="' + escapeHtml(label) + '">' + display + '</div>';
+      }).join('');
+
+      dropdown.querySelectorAll('.wilaya-item').forEach(item => {
+        item.addEventListener('mousedown', e => {
+          e.preventDefault();
+          input.value = item.dataset.value;
+          input.classList.remove('invalid');
+          document.getElementById('err-wilaya').classList.remove('show');
+          dropdown.classList.remove('show');
+        });
+      });
+    }
+    dropdown.classList.add('show');
+  }
+
+  input.addEventListener('focus', () => render(input.value));
+  input.addEventListener('input', () => render(input.value));
+  input.addEventListener('blur', () => {
+    setTimeout(() => dropdown.classList.remove('show'), 180);
+  });
+}
+
+/* ───────── Init ───────── */
+(function init() {
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  if (saved !== 'fr' && saved !== 'ar') {
+    saved = (navigator.language || '').toLowerCase().startsWith('ar') ? 'ar' : 'fr';
+  }
+  applyLang(saved);
+  setupWilayaAutocomplete();
+})();
+</script>
+</body>
+</html>
