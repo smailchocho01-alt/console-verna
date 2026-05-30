@@ -1,0 +1,27 @@
+import os
+from PIL import Image
+
+# اضبط هذه القيم
+INPUT_DIR = "."          # مجلد الصور (. يعني المجلد الحالي)
+OUTPUT_DIR = "output"    # مجلد النتائج
+QUALITY = 85             # 80-90 توازن ممتاز، أو استخدم lossless أدناه
+LOSSLESS = False         # True للحفاظ على الجودة كاملة بدون أي فقدان
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+count = 0
+for filename in os.listdir(INPUT_DIR):
+    if filename.lower().endswith(".png"):
+        img = Image.open(os.path.join(INPUT_DIR, filename))
+        out_name = os.path.splitext(filename)[0] + ".webp"
+        out_path = os.path.join(OUTPUT_DIR, out_name)
+
+        if LOSSLESS:
+            img.save(out_path, "webp", lossless=True, method=6)
+        else:
+            img.save(out_path, "webp", quality=QUALITY, method=6)
+
+        count += 1
+        print(f"✓ {filename} → {out_name}")
+
+print(f"\nتم تحويل {count} صورة بنجاح.")
