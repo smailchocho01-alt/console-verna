@@ -82,8 +82,8 @@ body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: #111111; 
 .mesure-gallery::-webkit-scrollbar { height: 6px; }
 .mesure-gallery::-webkit-scrollbar-thumb { background: #d0d0d0; border-radius: 3px; }
 .mesure-gallery::-webkit-scrollbar-track { background: transparent; }
-.mesure-card { flex: 0 0 85%; max-width: 380px; scroll-snap-align: center; border-radius: 10px; overflow: hidden; background: #f4f4f4; border: 0.5px solid #ececec; padding: 8px; }
-.mesure-card img { width: 100%; height: auto; display: block; }
+.mesure-card { flex: 0 0 85%; max-width: 380px; aspect-ratio: 7 / 12; scroll-snap-align: center; border-radius: 10px; overflow: hidden; background: #f4f4f4; border: 0.5px solid #ececec; padding: 8px; display: flex; align-items: center; justify-content: center; }
+.mesure-card img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .dim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .dim-item { background: #f4f4f4; padding: 11px 13px; border-radius: 8px; }
 .dim-item strong { display: block; font-size: 9.5px; color: #999; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 3px; }
