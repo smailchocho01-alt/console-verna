@@ -78,7 +78,12 @@ body { font-family: 'DM Sans', sans-serif; background: #faf6f1; color: #2d1810; 
 .cod-badge { background: rgba(184,88,66,0.10); border: 0.5px dashed #b85842; color: #8a3a28; padding: 11px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 500; text-align: center; }
 
 /* DIMENSIONS */
-.dim-img { display: block; width: 100%; height: auto; border-radius: 10px; margin-bottom: 1rem; background: #f3ebe0; border: 0.5px solid #e8dfd0; padding: 8px; }
+.mesure-gallery { display: flex; gap: 10px; overflow-x: auto; padding: 0.3rem 0 0.6rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; margin-bottom: 0.6rem; }
+.mesure-gallery::-webkit-scrollbar { height: 6px; }
+.mesure-gallery::-webkit-scrollbar-thumb { background: #d4c8b3; border-radius: 3px; }
+.mesure-gallery::-webkit-scrollbar-track { background: transparent; }
+.mesure-card { flex: 0 0 85%; max-width: 380px; scroll-snap-align: center; border-radius: 10px; overflow: hidden; background: #f3ebe0; border: 0.5px solid #e8dfd0; padding: 8px; }
+.mesure-card img { width: 100%; height: auto; display: block; }
 .dim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .dim-item { background: #f3ebe0; padding: 11px 13px; border-radius: 8px; }
 .dim-item strong { display: block; font-size: 9.5px; color: #999; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 3px; }
@@ -293,7 +298,12 @@ body { font-family: 'DM Sans', sans-serif; background: #faf6f1; color: #2d1810; 
   <!-- 6. DIMENSIONS -->
   <div class="sec">
     <p class="sec-label" data-i18n="dim-title">📐 Dimensions exactes</p>
-    <img class="dim-img" src="PHOTO/MESURE.webp" alt="Schéma des dimensions de la Console Verna" loading="lazy">
+    <div class="mesure-gallery">
+      <div class="mesure-card"><img src="PHOTO/MESURE.webp" alt="Schéma des dimensions — Vue 1" loading="lazy"></div>
+      <div class="mesure-card"><img src="PHOTO/MESURE (1).webp" alt="Schéma des dimensions — Vue 2" loading="lazy"></div>
+      <div class="mesure-card"><img src="PHOTO/MESURE (2).webp" alt="Schéma des dimensions — Vue 3" loading="lazy"></div>
+      <div class="mesure-card"><img src="PHOTO/MESURE (3).webp" alt="Schéma des dimensions — Vue 4" loading="lazy"></div>
+    </div>
     <div class="dim-grid">
       <div class="dim-item"><strong data-i18n="dim-h">Hauteur</strong><span>120 cm</span></div>
       <div class="dim-item"><strong data-i18n="dim-w">Largeur</strong><span>80 cm</span></div>
