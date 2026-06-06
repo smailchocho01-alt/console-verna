@@ -292,16 +292,6 @@ body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: #111111; 
     <p class="msg-note" data-i18n="msg-note">← Glissez pour voir →</p>
   </div>
 
-  <!-- 5. PRIX -->
-  <div class="sec">
-    <div class="price-block" style="margin-top:0;">
-      <div class="price-row">
-        <span class="price">11 500 DA</span>
-      </div>
-      <div class="cod-badge" data-i18n="cod-badge">💵 Paiement à la livraison — Pas un centime avant</div>
-    </div>
-  </div>
-
   <!-- 6. DIMENSIONS -->
   <div class="sec">
     <p class="sec-label" data-i18n="dim-title">📐 Dimensions exactes</p>
@@ -327,6 +317,13 @@ body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: #111111; 
   <!-- 7. ORDER FORM -->
   <div class="cta-sec">
     <h2 class="form-title" data-i18n="form-title">Votre commande</h2>
+
+    <div class="price-block" style="margin-top:0; margin-bottom:1.3rem; text-align:center;">
+      <div class="price-row" style="justify-content:center;">
+        <span class="price">11 500 DA</span>
+      </div>
+      <div class="cod-badge" data-i18n="cod-badge">💵 Paiement à la livraison — Pas un centime avant</div>
+    </div>
 
     <form id="order-form" onsubmit="return submitOrder(event)" novalidate>
       <div class="form-color-wrap">
