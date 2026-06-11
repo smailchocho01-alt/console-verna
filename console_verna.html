@@ -707,7 +707,7 @@ function submitOrder(e) {
     source: location.href
   });
 
-  if (window.fbq) fbq('track', 'Lead');
+  if (window.fbq) fbq('track', 'Purchase', { value: 11500, currency: 'DZD' });
 
   const cta = document.querySelector('.cta-sec');
   cta.classList.add('submitted');
@@ -716,6 +716,7 @@ function submitOrder(e) {
 }
 
 function contact() {
+  if (window.fbq) fbq('track', 'Lead');
   const msg = I18N[currentLang]['wa-question'];
   window.location.href = 'https://wa.me/' + PHONE_NUMBER + '?text=' + encodeURIComponent(msg);
 }
