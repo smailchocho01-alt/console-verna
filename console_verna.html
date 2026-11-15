@@ -591,24 +591,27 @@ let currentLang = 'fr';
 let selectedColor = 'beige';
 
 function sendToSheet(payload) {
-  if (!GS_WEBHOOK_URL) return;
+  if (!GS_WEBHOOK_URL) return Promise.resolve('inconnu');
   // infos pour le gardien (appareil, temps passé, source pub) + case piège invisible
   try { if (window.vernaGardien) Object.assign(payload, window.vernaGardien()); } catch (e) {}
   try { const piege = document.getElementById('site_web'); if (piege && piege.value) payload.site_web = piege.value; } catch (e) {}
   const body = JSON.stringify(payload);
+  // La réponse du gardien dit si la commande passe : code « ref », dernier chiffre pair = passée, impair = bloquée.
+  // Sans réponse en 4 s (panne), on considère « inconnu » : la commande n'est jamais perdue pour autant.
+  let envoi;
   try {
-    if (navigator.sendBeacon) {
-      const blob = new Blob([body], { type: 'text/plain;charset=utf-8' });
-      if (navigator.sendBeacon(GS_WEBHOOK_URL, blob)) return;
-    }
-    fetch(GS_WEBHOOK_URL, {
+    envoi = fetch(GS_WEBHOOK_URL, {
       method: 'POST',
-      mode: 'no-cors',
       keepalive: true,
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: body
-    }).catch(() => {});
-  } catch (e) {}
+    }).then(r => r.json()).then(j => {
+      const c = String((j && j.ref) || '');
+      if (!/^[0-9a-f]{8}$/.test(c)) return 'inconnu';
+      return parseInt(c[7], 16) % 2 === 0 ? 'passee' : 'bloquee';
+    }).catch(() => 'inconnu');
+  } catch (e) { envoi = Promise.resolve('inconnu'); }
+  return Promise.race([envoi, new Promise(res => setTimeout(() => res('inconnu'), 4000))]);
 }
 
 /* ───────── Language switching ───────── */
@@ -705,7 +708,7 @@ function submitOrder(e) {
     return false;
   }
 
-  sendToSheet({
+  const envoi = sendToSheet({
     lang: currentLang,
     prenom: prenom,
     phone: phoneRaw,
@@ -715,7 +718,8 @@ function submitOrder(e) {
     source: location.href
   });
 
-  if (window.fbq) fbq('track', 'Purchase', { value: 11500, currency: 'DZD' });
+  // Meta ne compte l'achat que si le gardien a laissé passer la commande (ou s'il n'a pas répondu à temps)
+  envoi.then(etat => { if (etat !== 'bloquee' && window.fbq) fbq('track', 'Purchase', { value: 11500, currency: 'DZD' }); });
 
   const cta = document.querySelector('.cta-sec');
   cta.classList.add('submitted');
