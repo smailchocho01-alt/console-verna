@@ -83,7 +83,16 @@
       t_page: Math.round((Date.now() - debut) / 100) / 10,
       fbclid: q.get('fbclid') || '', utm_source: q.get('utm_source') || '',
       utm_campaign: q.get('utm_campaign') || '', utm_content: q.get('utm_content') || '',
-      referer: document.referrer || ''
+      referer: document.referrer || '',
+      // cookies de Meta (_fbp = ce navigateur, _fbc = clic sur la pub) : le gardien les renvoie à Meta au « confirmé »
+      fbp: cookie('_fbp'), fbc: cookie('_fbc')
     };
   };
+
+  function cookie(nom) {
+    try {
+      var m = document.cookie.match(new RegExp('(?:^|; )' + nom + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]).slice(0, 300) : '';
+    } catch (e) { return ''; }
+  }
 })();
